@@ -22,6 +22,9 @@ public class Cinema {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToOne(mappedBy = "Address_id")
     private Address address;
 
