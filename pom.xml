@@ -12,7 +12,7 @@
 	<artifactId>CinemaApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CinemaApp</name>
-	<description>Project for recrutacion</description>
+	<description>Cinema booking app</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
