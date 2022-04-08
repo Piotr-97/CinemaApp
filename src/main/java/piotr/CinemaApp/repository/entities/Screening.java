@@ -20,11 +20,12 @@ public class Screening {
     @Column(name = "screening_start")
     private LocalDate screeningStart;
 
-    @Column(name = "movie")
-    @ManyToOne()
+    @JoinColumn(name = "movie")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
 
-    @Column(name = "hall")
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hall_id")
     private Hall hall;
 }

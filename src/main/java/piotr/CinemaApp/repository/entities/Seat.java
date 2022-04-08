@@ -2,14 +2,18 @@ package piotr.CinemaApp.repository.entities;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "seat")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Data
 public class Seat {
 
     @Id
@@ -17,10 +21,13 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "row")
-    private int row;
+    @Column(name = "valuerow")
+    private Long row;
 
-    @Column(name = "number")
-    private int number;
+    @Column(name = "seat_number")
+    private Long number;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hall_id")
+    private Hall hall;
 }

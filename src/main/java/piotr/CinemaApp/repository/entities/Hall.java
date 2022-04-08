@@ -28,4 +28,5 @@ public class Hall {
     @Column(name ="seat_limit")
     private int seatLimit;
 
+
 }

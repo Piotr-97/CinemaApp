@@ -23,7 +23,8 @@ public class Reservation {
     @Column(name = "lastname")
     private String lastname;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "screening_id")
     private Screening screening;
 
 
