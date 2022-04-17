@@ -7,6 +7,8 @@ import piotr.CinemaApp.repository.entities.Screening;
 import piotr.CinemaApp.repository.entities.dtos.ScreeningResponse;
 import piotr.CinemaApp.repository.entities.repository.ScreeningRepository;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class ScreeningService {
 
 
     public List<ScreeningResponse> getAllscreenings(){
-        List<Screening> screenings = screeningRepository.findAll();
+        List<Screening> screenings = screeningRepository.getAllScreeningOrderedByStart();
 
         List<ScreeningResponse> result = new ArrayList<>();
         for (Screening screening : screenings) {
@@ -31,4 +33,15 @@ public class ScreeningService {
     }
 
 
+    public List<Screening> getScreeningByTitileAndTime(String title, String time) {
+        LocalTime localTime = convertDate(time);
+        List<Screening> result = screeningRepository.getScreeningByTitileAndTime(title,localTime);
+
+        return result;
+    }
+
+    public LocalTime convertDate(String dateString){
+        LocalTime localTime = LocalTime.parse(dateString,DateTimeFormatter.ofPattern("HH:mm"));
+        return localTime;
+    }
 }

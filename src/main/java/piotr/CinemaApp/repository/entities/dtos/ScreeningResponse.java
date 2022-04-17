@@ -4,17 +4,13 @@ package piotr.CinemaApp.repository.entities.dtos;
 import lombok.Data;
 import piotr.CinemaApp.repository.entities.Hall;
 import piotr.CinemaApp.repository.entities.Movie;
-import java.time.LocalDate;
-public class ScreeningResponse {
-
-
-
+import java.time.LocalTime;
 
 @Data
-    public class Screening {
+public class ScreeningResponse {
 
-        private LocalDate screeningStart;
-        private Movie movie;
-        private Hall hall;
+    private LocalTime screeningStart;
+    private Movie movie;
+    private Hall hall;
     }
-}
+

@@ -1,13 +1,16 @@
 package piotr.CinemaApp.repository.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
 @Table(name = "screening")
 public class Screening {
@@ -18,14 +21,15 @@ public class Screening {
     private Long id;
 
     @Column(name = "screening_start")
-    private LocalDate screeningStart;
+    private LocalTime screeningStart;
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "movie")
-    @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "hall_id")
     private Hall hall;
 }
